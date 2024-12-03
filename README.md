@@ -72,13 +72,9 @@ public class Program
         //   buffer we should start to read. The int output parameter represents
         //   how many bytes we have read.
         StructParser.RegisterCustomParser<bool>(
-            // First, a function that transforms the object into a byte buffer
-            // is needed.
             obj => {
                 return BitConverter.GetBytes((bool)obj);
             },
-            // Second, a function taking in a byte buffer and 
-            //
             (buffer, index) => {
                 return (BitConverter.ToInt32(buffer, index), sizeof(bool));
             }
