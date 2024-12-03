@@ -18,7 +18,7 @@ The meat of this project can is found in the StructParser file within the main p
 This list will expand overtime.
 
 ## Minimal Server Example
-```
+```c#
 using StructMessagingNetwork;
 
 public class Program
@@ -58,7 +58,7 @@ public class Program
 ```
 
 ## Registering Custom Parsers
-```
+```c#
 using StructMessagingNetwork;
 
 public class Program
