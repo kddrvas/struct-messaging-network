@@ -59,26 +59,18 @@ public class Program
 
 ## Registering Custom Parsers
 ```c#
-using StructMessagingNetwork;
-
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        // Example implementation for bool. You need to provide two functions.
-        // First: Object -> byte[]
-        // Second: (byte[], int) -> (Object, int)
-        //   The int input parameter is an index, which represents where in the
-        //   buffer we should start to read. The int output parameter represents
-        //   how many bytes we have read.
-        StructParser.RegisterCustomParser<bool>(
-            obj => {
-                return BitConverter.GetBytes((bool)obj);
-            },
-            (buffer, index) => {
-                return (BitConverter.ToInt32(buffer, index), sizeof(bool));
-            }
-        );
-    }
-}
+// Example implementation for bool. You need to provide two functions.
+// First: Object -> byte[]
+// Second: (byte[], int) -> (Object, int)
+//   The int input parameter is an index, which represents where in the
+//   buffer we should start to read. The int output parameter represents
+//   how many bytes we have read.
+StructParser.RegisterCustomParser<bool>(
+	obj => {
+		return BitConverter.GetBytes((bool)obj);
+	},
+	(buffer, index) => {
+		return (BitConverter.ToInt32(buffer, index), sizeof(bool));
+	}
+);
 ```
